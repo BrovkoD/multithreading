@@ -3,19 +3,23 @@ package thread;
 import model.BaseDTO;
 import model.FirstDTO;
 import model.SecondDTO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import utils.CustomTimer;
 
 import java.util.concurrent.locks.ReentrantLock;
 
-import static utils.CustomRandom.getRand;
+import static utils.CustomRandom.getIntRand;
 
 public abstract class BaseThread extends CustomTimer implements Runnable {
+
+    private static final Logger logger = LoggerFactory.getLogger(BaseThread.class);
 
     private static final int MIN_I = 10000;
     private static final int MAX_I = 20000;
 
-    ReentrantLock lock1 = new ReentrantLock();
-    ReentrantLock lock2 = new ReentrantLock();
+    static final ReentrantLock lock1 = new ReentrantLock();
+    static final ReentrantLock lock2 = new ReentrantLock();
 
     FirstDTO firstDTO;
     SecondDTO secondDTO;
@@ -36,11 +40,12 @@ public abstract class BaseThread extends CustomTimer implements Runnable {
     <T extends BaseDTO> void changeDTO(ReentrantLock lock, T DTO) {
         lock.lock();
         try {
-            for (int i = 0; i < getRand(MIN_I, MAX_I); i++) {
+            for (int i = 0; i < getIntRand(MIN_I, MAX_I); i++) {
                 DTO.setNumber(DTO.getNumber() + 1);
             }
+        } catch (Exception e) {
+            logger.warn("Error while executing changeDTO method", e);
         } finally {
-            System.out.println(Thread.currentThread().getName() + ": " + DTO.toString());
             lock.unlock();
         }
     }
@@ -51,8 +56,10 @@ public abstract class BaseThread extends CustomTimer implements Runnable {
 //            for (int i = 0; i < 100; i++) {
 //                DTO.setNumber(DTO.getNumber() + 1);
 //            }
+//        } catch (Exception e) {
+//            logger.warn("Error while executing changeDTO method", e);
 //        } finally {
-//            System.out.println(Thread.currentThread().getName() + ": " + DTO.toString());
+//            logger.info(DTO.toString());
 //            lock.unlock();
 //        }
 //    }

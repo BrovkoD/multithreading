@@ -1,15 +1,22 @@
 package utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.time.Duration;
 import java.time.Instant;
 import java.util.concurrent.locks.ReentrantLock;
 
+import static java.lang.String.format;
+
 public class CustomTimer {
 
-    private static ReentrantLock lock = new ReentrantLock();
+    private static final Logger logger = LoggerFactory.getLogger(CustomTimer.class);
 
-    private static Instant start;
+    private static final ReentrantLock lock = new ReentrantLock();
+
     private static Integer countDown = 0;
+    private static Instant start;
 
     public CustomTimer() {
         start = Instant.now();
@@ -19,15 +26,18 @@ public class CustomTimer {
         CustomTimer.countDown = countDown;
     }
 
-    protected static void endCheck() {
+    public static void endCheck() {
         lock.lock();
         try {
             countDown--;
             if (countDown == 0) {
-                System.out.println("Duration: " + Duration.between(start, Instant.now()).toMillis());
+                logger.info(format("Duration: %dms", Duration.between(start, Instant.now()).toMillis()));
+
             } else {
-                System.out.println(Thread.currentThread().getName() + ": " + countDown + " thread(s) left");
+                logger.info(format("%d thread(s) left", countDown));
             }
+        } catch (Exception e) {
+            logger.warn("Error while executing endCheck method", e);
         } finally {
             lock.unlock();
         }
