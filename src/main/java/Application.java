@@ -11,6 +11,7 @@ import java.util.List;
 
 import static java.lang.String.format;
 import static utils.CustomRandom.getIntRand;
+import static utils.CustomTimer.setCountDown;
 
 public class Application {
 
@@ -42,7 +43,7 @@ public class Application {
             }
         }
 
-        customTimer.setCountDown(N);
+        setCountDown(N);
 
         logger.info("Starting all threads...");
 
