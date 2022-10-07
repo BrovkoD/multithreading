@@ -35,12 +35,13 @@ public class Application {
         logger.info(format("Amount of threads N = %d; %d of them are the first thread type", N, HALF_N));
 
         List<Thread> threadList = new ArrayList<>();
-        for (int i = 0; i < N; i++){
-            if (i < HALF_N){
-                threadList.add(new Thread(new FirstThread(firstDTO, secondDTO)));
-            } else {
-                threadList.add(new Thread(new SecondThread(firstDTO, secondDTO)));
-            }
+
+        for (int i = 0; i < HALF_N; i++){
+            threadList.add(new Thread(new FirstThread(firstDTO, secondDTO)));
+        }
+
+        for (int i = HALF_N; i < N; i++){
+            threadList.add(new Thread(new SecondThread(firstDTO, secondDTO)));
         }
 
         setCountDown(N);

@@ -20,6 +20,9 @@ public abstract class BaseThread extends CustomTimer implements Runnable {
     private static final int MIN_I = 10000;
     private static final int MAX_I = 20000;
 
+    private static final int MIN_ADD = 0;
+    private static final int MAX_ADD = 10;
+
     static final ReentrantLock lock1 = new ReentrantLock();
     static final ReentrantLock lock2 = new ReentrantLock();
 
@@ -43,7 +46,7 @@ public abstract class BaseThread extends CustomTimer implements Runnable {
         lock.lock();
         try {
             for (int i = 0; i < getIntRand(MIN_I, MAX_I); i++) {
-                DTO.setNumber(DTO.getNumber() + getDoubleRand(0, 10));
+                DTO.setNumber(DTO.getNumber() + getDoubleRand(MIN_ADD, MAX_ADD));
             }
         } catch (Exception e) {
             logger.warn("Error while executing changeDTO method", e);
