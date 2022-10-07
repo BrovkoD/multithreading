@@ -11,6 +11,7 @@ import java.util.List;
 
 import static java.lang.String.format;
 import static utils.CustomRandom.getIntRand;
+import static utils.CustomTimer.setCountDown;
 
 public class Application {
 
@@ -31,7 +32,7 @@ public class Application {
         final int N = getIntRand(MIN_N, MAX_N);
         final int HALF_N = N / 2;
 
-        logger.info(format("N: %d; N/2: %d", N, HALF_N));
+        logger.info(format("Amount of threads N = %d; %d of them are the first thread type", N, HALF_N));
 
         List<Thread> threadList = new ArrayList<>();
         for (int i = 0; i < N; i++){
@@ -42,7 +43,7 @@ public class Application {
             }
         }
 
-        customTimer.setCountDown(N);
+        setCountDown(N);
 
         logger.info("Starting all threads...");
 

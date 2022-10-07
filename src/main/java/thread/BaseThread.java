@@ -9,6 +9,8 @@ import utils.CustomTimer;
 
 import java.util.concurrent.locks.ReentrantLock;
 
+import static java.lang.String.format;
+import static utils.CustomRandom.getDoubleRand;
 import static utils.CustomRandom.getIntRand;
 
 public abstract class BaseThread extends CustomTimer implements Runnable {
@@ -41,11 +43,14 @@ public abstract class BaseThread extends CustomTimer implements Runnable {
         lock.lock();
         try {
             for (int i = 0; i < getIntRand(MIN_I, MAX_I); i++) {
-                DTO.setNumber(DTO.getNumber() + 1);
+                DTO.setNumber(DTO.getNumber() + getDoubleRand(0, 10));
             }
         } catch (Exception e) {
             logger.warn("Error while executing changeDTO method", e);
         } finally {
+            if (getCountDown() == 1) {
+                logger.info(format("Results: %s\t\t%s", firstDTO.toString(), secondDTO.toString()));
+            }
             lock.unlock();
         }
     }
@@ -59,7 +64,9 @@ public abstract class BaseThread extends CustomTimer implements Runnable {
 //        } catch (Exception e) {
 //            logger.warn("Error while executing changeDTO method", e);
 //        } finally {
-//            logger.info(DTO.toString());
+//            if (getCountDown() == 1) {
+//                logger.info(format("Results: %s\t\t%s", firstDTO.toString(), secondDTO.toString()));
+//            }
 //            lock.unlock();
 //        }
 //    }
