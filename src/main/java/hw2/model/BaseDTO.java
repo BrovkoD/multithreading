@@ -1,4 +1,4 @@
-package HW2.model;
+package hw2.model;
 
 public interface BaseDTO {
 

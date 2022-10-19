@@ -1,4 +1,4 @@
-import HW2.HW2;
+import hw2.HW2;
 
 public class Application {
 

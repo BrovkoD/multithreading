@@ -1,17 +1,17 @@
-package HW2.thread;
+package hw2.thread;
 
-import HW2.model.BaseDTO;
-import HW2.model.FirstDTO;
-import HW2.model.SecondDTO;
+import hw2.model.BaseDTO;
+import hw2.model.FirstDTO;
+import hw2.model.SecondDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import HW2.utils.CustomTimer;
+import hw2.utils.CustomTimer;
 
 import java.util.concurrent.locks.ReentrantLock;
 
 import static java.lang.String.format;
-import static HW2.utils.CustomRandom.getDoubleRand;
-import static HW2.utils.CustomRandom.getIntRand;
+import static hw2.utils.CustomRandom.getDoubleRand;
+import static hw2.utils.CustomRandom.getIntRand;
 
 public abstract class BaseThread extends CustomTimer implements Runnable {
 
