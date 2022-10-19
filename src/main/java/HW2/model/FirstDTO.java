@@ -1,13 +1,13 @@
-package model;
+package HW2.model;
 
-public class SecondDTO implements BaseDTO {
+public class FirstDTO implements BaseDTO {
 
     private double number;
 
-    public SecondDTO() {
+    public FirstDTO() {
     }
 
-    public SecondDTO(double number) {
+    public FirstDTO(double number) {
         this.number = number;
     }
 
@@ -21,7 +21,7 @@ public class SecondDTO implements BaseDTO {
 
     @Override
     public String toString() {
-        return "SecondPOJO{" +
+        return "FirstPOJO{" +
                 "number=" + number +
                 '}';
     }
