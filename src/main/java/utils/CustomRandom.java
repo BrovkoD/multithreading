@@ -1,4 +1,4 @@
-package hw2.utils;
+package utils;
 
 import java.util.concurrent.ThreadLocalRandom;
 
