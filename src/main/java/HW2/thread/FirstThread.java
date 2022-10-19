@@ -1,7 +1,7 @@
-package thread;
+package HW2.thread;
 
-import model.FirstDTO;
-import model.SecondDTO;
+import HW2.model.FirstDTO;
+import HW2.model.SecondDTO;
 
 public class FirstThread extends BaseThread {
 

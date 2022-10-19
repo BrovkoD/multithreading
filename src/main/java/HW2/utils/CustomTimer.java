@@ -1,4 +1,4 @@
-package utils;
+package HW2.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,7 +39,7 @@ public class CustomTimer {
                         Duration.between(start, Instant.now()).toMillis()));
 
             } else {
-//                logger.info(format("%d thread(s) left", countDown));
+//                logger.info(format("%d HW2.thread(s) left", countDown));
             }
         } catch (Exception e) {
             logger.warn("Error while executing endCheck method", e);
