@@ -5,13 +5,13 @@ import hw2.model.FirstDTO;
 import hw2.model.SecondDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import hw2.utils.CustomTimer;
+import utils.CustomTimer;
 
 import java.util.concurrent.locks.ReentrantLock;
 
 import static java.lang.String.format;
-import static hw2.utils.CustomRandom.getDoubleRand;
-import static hw2.utils.CustomRandom.getIntRand;
+import static utils.CustomRandom.getDoubleRand;
+import static utils.CustomRandom.getIntRand;
 
 public abstract class BaseThread extends CustomTimer implements Runnable {
 

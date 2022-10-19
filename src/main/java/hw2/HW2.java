@@ -6,14 +6,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import hw2.thread.FirstThread;
 import hw2.thread.SecondThread;
-import hw2.utils.CustomTimer;
+import utils.CustomTimer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.String.format;
-import static hw2.utils.CustomRandom.getIntRand;
-import static hw2.utils.CustomTimer.setCountDown;
+import static utils.CustomRandom.getIntRand;
+import static utils.CustomTimer.setCountDown;
 
 public class HW2 {
 
